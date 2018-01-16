@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.utsha.expensemanager.fillInfo"
-    android:background="WHITE"
+    android:background="#ffffff"
     android:paddingBottom="20dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp">
 
     <android.support.v7.widget.LinearLayoutCompat
-        android:id="@+id/ "
+        android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
