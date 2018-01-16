@@ -34,7 +34,7 @@ Button button;
         values.put("SAVINGS",m);
         values.put("BUDGET",p);
 
-        db.insertOrThrow(null, null,values);
+        db.insertOrThrow("user", null,values);
         Intent k = new Intent(this, UserExpenseActivity.class);
         startActivity(k);
 
