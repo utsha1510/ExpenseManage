@@ -1,6 +1,7 @@
 package com.example.utsha.expensemanager;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -33,7 +34,9 @@ Button button;
         values.put("SAVINGS",m);
         values.put("BUDGET",p);
 
-        db.insertOrThrow("med_d", null,values);
+        db.insertOrThrow(null, null,values);
+        Intent k = new Intent(this, UserExpenseActivity.class);
+        startActivity(k);
 
     }
 }
