@@ -63,27 +63,35 @@ public class User {
     }
 
     public void setIncome(TextInputEditText income) {
-        this.income = income;
+        String incom = income.getText().toString();
+        int inco = new Integer(incom).intValue();
+        this.income = inco;
     }
     public long getBudget() {
         return budget;
     }
 
     public void setBudget(TextInputEditText budget) {
-        this.budget = budget;
+        String incom = budget.getText().toString();
+        int inco = new Integer(incom).intValue();
+        this.budget = inco;
     }
     public long getSavings() {
         return savings;
     }
 
     public void setSavings(TextInputEditText savings) {
-        this.savings = savings;
+        String incom = savings.getText().toString();
+        int inco = new Integer(incom).intValue();
+        this.savings = inco;
     }
     public long getExpense() {
         return expense;
     }
 
-    public void setExpense(TextInputEditText expense) {
-        this.expense = expense;
+    public void setExpense(TextInputEditText expense)
+    {String incom = expense.getText().toString();
+        int inco = new Integer(incom).intValue();
+        this.expense = inco;
     }
 }
