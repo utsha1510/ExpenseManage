@@ -1,7 +1,8 @@
 package usermodel;
 
 
-
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 
 public class User {
     private int id;
@@ -61,28 +62,28 @@ public class User {
         return income;
     }
 
-    public void setIncome(long income) {
+    public void setIncome(TextInputEditText income) {
         this.income = income;
     }
     public long getBudget() {
         return budget;
     }
 
-    public void setBudget(long budget) {
+    public void setBudget(TextInputEditText budget) {
         this.budget = budget;
     }
     public long getSavings() {
         return savings;
     }
 
-    public void setSavings(long savings) {
+    public void setSavings(TextInputEditText savings) {
         this.savings = savings;
     }
     public long getExpense() {
         return expense;
     }
 
-    public void setExpense(long expense) {
+    public void setExpense(TextInputEditText expense) {
         this.expense = expense;
     }
 }

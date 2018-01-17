@@ -25,11 +25,15 @@ import usermodel.User;
         private TextInputLayout textInputLayoutEmail;
         private TextInputLayout textInputLayoutPassword;
         private TextInputLayout textInputLayoutConfirmPassword;
+        private TextInputLayout textInputLayoutIncome;
+        private TextInputLayout textInputLayoutBudget;
 
         private TextInputEditText textInputEditTextName;
         private TextInputEditText textInputEditTextEmail;
         private TextInputEditText textInputEditTextPassword;
         private TextInputEditText textInputEditTextConfirmPassword;
+        private TextInputEditText textInputEditTextIncome;
+        private TextInputEditText textInputEditTextBudget;
 
         private AppCompatButton appCompatButtonRegister;
         private AppCompatTextView appCompatTextViewLoginLink;
@@ -57,12 +61,14 @@ import usermodel.User;
             textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
             textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
             textInputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.textInputLayoutConfirmPassword);
-
+            textInputLayoutIncome= (TextInputLayout) findViewById(R.id.textInputLayoutIncome);
+            textInputLayoutBudget= (TextInputLayout) findViewById(R.id.textInputLayoutBudget);
             textInputEditTextName = (TextInputEditText) findViewById(R.id.textInputEditTextName);
             textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
             textInputEditTextPassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
             textInputEditTextConfirmPassword = (TextInputEditText) findViewById(R.id.textInputEditTextConfirmPassword);
-
+            textInputEditTextIncome = (TextInputEditText) findViewById(R.id.textInputEditTextIncome);
+            textInputEditTextBudget = (TextInputEditText) findViewById(R.id.textInputEditTextBudget);
             appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
 
             appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
@@ -134,7 +140,8 @@ import usermodel.User;
                 user.setName(textInputEditTextName.getText().toString().trim());
                 user.setEmail(textInputEditTextEmail.getText().toString().trim());
                 user.setPassword(textInputEditTextPassword.getText().toString().trim());
-
+                user.setIncome(textInputEditTextIncome);
+                user.setBudget(textInputEditTextBudget);
                 databaseHelper.addUser(user);
 
                 // Snack Bar to show success message that record saved successfully
@@ -158,6 +165,7 @@ import usermodel.User;
             textInputEditTextEmail.setText(null);
             textInputEditTextPassword.setText(null);
             textInputEditTextConfirmPassword.setText(null);
+
         }
     }
 

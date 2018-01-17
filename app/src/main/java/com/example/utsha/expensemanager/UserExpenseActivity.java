@@ -11,6 +11,7 @@ import android.widget.Button;
 import sql.databasehelper;
 import usermodel.User;
 
+
 public class UserExpenseActivity extends AppCompatActivity {
 
     private databasehelper databaseHelper;
@@ -42,13 +43,13 @@ public class UserExpenseActivity extends AppCompatActivity {
         savingTextView.setText("Savings: " + Long.toString(user.getSavings()));
         budgetTextView.setText("Budget: " + Long.toString(user.getBudget()));
         expenseTextView.setText("Expense: " + Long.toString(user.getExpense()));
-    }
+
    button= (Button) findViewById(R.id.addButton);
-    button.setOnClickListener(this);
-@Override
+    button.setOnClickListener((View.OnClickListener) this);}
+
     public  void onClick(View view)
 {
-    Intent k = new Intent(this, fillinfo.activity);
+    Intent k = new Intent(this, fillInfo.class);
     startActivity(k);
 }
 
