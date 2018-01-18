@@ -32,8 +32,9 @@ public class UserExpenseActivity extends AppCompatActivity implements View.OnCli
         this.nameTextView = (AppCompatTextView) findViewById(R.id.textViewName);
         this.incomeTextView = (AppCompatTextView) findViewById(R.id.textViewIncome);
         this.savingTextView = (AppCompatTextView) findViewById(R.id.textViewSaving);
-        this.budgetTextView = (AppCompatTextView) findViewById(R.id.textViewBudget);
+
         this.expenseTextView = (AppCompatTextView) findViewById(R.id.textViewExpense);
+        this.budgetTextView = (AppCompatTextView) findViewById(R.id.textViewBudget);
 
         databaseHelper = new databasehelper(this);
 
@@ -42,10 +43,11 @@ public class UserExpenseActivity extends AppCompatActivity implements View.OnCli
         Log.i("TAG_APP","inoome: " + user.getIncome()  + " saving: " + user.getSavings() + " budget: " + user.getBudget() + " expense: " + user.getExpense());
 
         nameTextView.setText(user.getName());
-        incomeTextView.setText("Income: " + Long.toString(user.getIncome()));
-        savingTextView.setText("Savings: " + Long.toString(user.getSavings()));
-        budgetTextView.setText("Budget: " + Long.toString(user.getBudget()));
         expenseTextView.setText("Expense: " + Long.toString(user.getExpense()));
+        incomeTextView.setText("Income: " + Long.toString(user.getIncome()));
+        budgetTextView.setText("Budget: " + Long.toString(user.getBudget()));
+        savingTextView.setText("Savings: " + Long.toString(user.getSavings()));
+
 
    button= (Button) findViewById(R.id.addButton);
     button.setOnClickListener(this);}

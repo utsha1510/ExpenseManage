@@ -24,10 +24,9 @@ Button button;
     private TextInputEditText textInputEditTextBudget;
     private TextInputEditText textInputEditTextExpense;
 
-    private TextInputLayout textInputLayoutSavings;
+
     private TextInputLayout textInputLayoutExpense;
-    private TextInputLayout textInputLayoutIncome;
-    private TextInputLayout textInputLayoutBudget;
+
     private AppCompatButton appCompatButtonfillInfo;
     private final AppCompatActivity activity = fillInfo.this;
 
@@ -55,13 +54,8 @@ Button button;
     }
     @SuppressLint("WrongViewCast")
     private void initViews() {
-        textInputLayoutIncome = (TextInputLayout) findViewById(R.id.textInputLayoutIncome);
-        textInputLayoutSavings = (TextInputLayout) findViewById(R.id.textInputLayoutSavings);
-        textInputLayoutBudget = (TextInputLayout) findViewById(R.id.textInputLayoutBudget);
+
         textInputLayoutExpense = (TextInputLayout) findViewById(R.id.textInputLayoutExpense);
-        textInputEditTextIncome = (TextInputEditText) findViewById(R.id.textInputEditTextIncome);
-        textInputEditTextSavings = (TextInputEditText) findViewById(R.id.textInputEditTextSavings);
-        textInputEditTextBudget = (TextInputEditText) findViewById(R.id.textInputEditTextBudget);
         textInputEditTextExpense = (TextInputEditText) findViewById(R.id.textInputEditTextExpense);
         appCompatButtonfillInfo = (AppCompatButton) findViewById(R.id.appCompatButtonfillInfo);
 
@@ -83,37 +77,19 @@ Button button;
 
 
             user.setExpense(textInputEditTextExpense);
-            user.setBudget(textInputEditTextBudget);
-        user.setIncome(textInputEditTextIncome);
-        user.setSavings(textInputEditTextSavings);
+
             databaseHelper.addUser(user);
 
 
 
     }
     private void emptyInputEditText() {
-        textInputEditTextIncome.setText(null);
-        textInputEditTextBudget.setText(null);
-        textInputEditTextSavings.setText(null);
+
         textInputEditTextExpense.setText(null);
 
     }
 
 
-   /* public void  onClick(View view)
-    {
-        String d=edit1.getText().toString();
-        String m=edit2.getText().toString();
-        String p=edit3.getText().toString();
-        ContentValues values = new ContentValues();
-        values.put("INCOME",d );
-        values.put("SAVINGS",m);
-        values.put("BUDGET",p);
 
-        user.insertOrThrow("user", null,values);
-        Intent k = new Intent(this, UserExpenseActivity.class);
-        startActivity(k);
-
-    }*/
 }
 

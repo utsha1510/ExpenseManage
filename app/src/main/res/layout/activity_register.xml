@@ -99,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Income"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:maxLines="1"
             android:textColor="@android:color/white" />
 
@@ -117,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Budget"
-            android:inputType="textPassword"
+            android:inputType="number"
             android:maxLines="1"
             android:textColor="@android:color/white" />
 
