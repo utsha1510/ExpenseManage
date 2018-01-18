@@ -16,7 +16,7 @@ import android.widget.EditText;
 import sql.databasehelper;
 import usermodel.User;
 
-public class fillInfo extends AppCompatActivity {
+public class fillInfo extends AppCompatActivity implements View.OnClickListener {
 Button button;
 
     private TextInputEditText textInputEditTextIncome;

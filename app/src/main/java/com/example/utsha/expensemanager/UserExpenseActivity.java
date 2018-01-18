@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,7 +13,7 @@ import sql.databasehelper;
 import usermodel.User;
 
 
-public class UserExpenseActivity extends AppCompatActivity {
+public class UserExpenseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private databasehelper databaseHelper;
     Button button;
@@ -38,6 +39,8 @@ public class UserExpenseActivity extends AppCompatActivity {
 
         User user = databaseHelper.getUser(getIntent().getExtras().getString("EMAIL"),getIntent().getExtras().getString("PASSWORD"));
 
+        Log.i("TAG_APP","inoome: " + user.getIncome()  + " saving: " + user.getSavings() + " budget: " + user.getBudget() + " expense: " + user.getExpense());
+
         nameTextView.setText(user.getName());
         incomeTextView.setText("Income: " + Long.toString(user.getIncome()));
         savingTextView.setText("Savings: " + Long.toString(user.getSavings()));
@@ -45,7 +48,7 @@ public class UserExpenseActivity extends AppCompatActivity {
         expenseTextView.setText("Expense: " + Long.toString(user.getExpense()));
 
    button= (Button) findViewById(R.id.addButton);
-    button.setOnClickListener((View.OnClickListener) this);}
+    button.setOnClickListener(this);}
 
     public  void onClick(View view)
 {
