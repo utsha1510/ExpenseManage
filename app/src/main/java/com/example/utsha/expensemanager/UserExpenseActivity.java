@@ -10,12 +10,14 @@ import android.view.View;
 import android.widget.Button;
 
 import sql.databasehelper;
+import sql.expenseDatabase;
 import usermodel.User;
 
 
 public class UserExpenseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private databasehelper databaseHelper;
+    private expenseDatabase database;
     Button button;
 
     private AppCompatTextView nameTextView;
@@ -37,6 +39,7 @@ public class UserExpenseActivity extends AppCompatActivity implements View.OnCli
         this.budgetTextView = (AppCompatTextView) findViewById(R.id.textViewBudget);
 
         databaseHelper = new databasehelper(this);
+        database=new expenseDatabase(this);
 
         User user = databaseHelper.getUser(getIntent().getExtras().getString("EMAIL"),getIntent().getExtras().getString("PASSWORD"));
 
