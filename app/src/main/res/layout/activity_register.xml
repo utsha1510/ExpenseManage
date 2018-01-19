@@ -34,7 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_name"
-                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:inputType="textPersonName|textCapWords"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
@@ -50,7 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
-                android:inputType="text"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
@@ -66,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_password"
+                android:imeOptions="actionNext"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@android:color/white" />
@@ -84,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_confirm_password"
+            android:imeOptions="actionNext"
             android:inputType="textPassword"
             android:maxLines="1"
             android:textColor="@android:color/white" />
@@ -98,6 +102,7 @@
             android:id="@+id/textInputEditTextIncome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
             android:hint="Enter Income"
             android:inputType="number"
             android:maxLines="1"
@@ -116,6 +121,7 @@
             android:id="@+id/textInputEditTextBudget"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
             android:hint="Enter Budget"
             android:inputType="number"
             android:maxLines="1"
