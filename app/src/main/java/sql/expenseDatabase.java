@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import usermodel.Transaction;
 import usermodel.User;
 
 import static sql.databasehelper.TABLE_USER;
@@ -37,12 +38,12 @@ public class expenseDatabase extends SQLiteOpenHelper {
         super(context, name, factory, version);
         this.context = context;
     }
-    public void addUser(User user) {
+    public void addUser(Transaction user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(COLUMN_USER_ID, user.getId());
-
+        values.put(COLUMN_USER_ID, user.getUser_id());
+        values.put(COLUMN_EXPENSE_NAME, user.getExpenseName());
         values.put(COLUMN_EXPENSE_AMOUNT, user.getExpense());
         //values.put(COLUMN_SAVINGS, user.getSavings());
 
@@ -50,7 +51,7 @@ public class expenseDatabase extends SQLiteOpenHelper {
         if (newRowId == -1) {
             Toast.makeText(this.context, "Error with adding expense", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this.context, "Added successfully " , Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.context, "Expense added successfully " , Toast.LENGTH_SHORT).show();
         }
         db.close();
     }

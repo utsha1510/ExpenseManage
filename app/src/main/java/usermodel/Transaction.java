@@ -44,5 +44,5 @@ public class Transaction {
         int inco = new Integer(incom).intValue();
         this.expense = inco;
     }
-    List <Transaction> l;
+   public List <Transaction> l;
 }

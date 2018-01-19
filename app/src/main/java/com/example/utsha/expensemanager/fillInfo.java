@@ -15,6 +15,7 @@ import android.widget.EditText;
 
 import sql.databasehelper;
 import sql.expenseDatabase;
+import usermodel.Transaction;
 import usermodel.User;
 
 public class fillInfo extends AppCompatActivity implements View.OnClickListener {
@@ -30,7 +31,7 @@ Button button;
     private final AppCompatActivity activity = fillInfo.this;
 
     private expenseDatabase databaseHelper;
-    private User user;
+    private Transaction user;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -43,7 +44,7 @@ Button button;
     private void initObjects() {
 
         databaseHelper = new expenseDatabase(activity);
-        user = new User();
+        user = new Transaction();
 
     }
     private void initListeners() {
@@ -74,8 +75,7 @@ Button button;
     }
     private void postDataToSQLite() {
 
-
-            user.setExpense(textInputEditTextExpense);
+                       user.setExpense(textInputEditTextExpense);
 
            // expenseDatabase.addUser(user);
 
