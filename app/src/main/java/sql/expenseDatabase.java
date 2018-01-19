@@ -2,6 +2,7 @@ package sql;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -17,7 +18,7 @@ import static sql.databasehelper.TABLE_USER;
 
 public class expenseDatabase extends SQLiteOpenHelper {
     private static final  int  DATABASE_VERSION = 1;
-    private static final String COLUMN_USER_ID = "user_id";
+    public static final String COLUMN_USER_ID = "user_id";
     private static final String DATABASE_NAME = "UserExpense.db";
     private static final String TABLE_USER_EXPENSE = "userExpense";
     private static final String COLUMN_EXPENSE_NAME = "expense_name";
@@ -55,6 +56,16 @@ public class expenseDatabase extends SQLiteOpenHelper {
         }
         db.close();
     }
+   SQLiteDatabase db = this.getReadableDatabase();
+    String selection = COLUMN_EXPENSE_AMOUNT + " = ?";
+    //String[] selectionArgs = {id};
+    Cursor cursor = db.query(
+            TABLE_USER_EXPENSE,
+            selection,
+            null,
+            COLUMN_USER_ID,
+            null
+    );
 
     @Override
     public void onCreate(SQLiteDatabase db) {

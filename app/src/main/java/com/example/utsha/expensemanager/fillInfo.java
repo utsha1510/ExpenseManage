@@ -3,6 +3,8 @@ package com.example.utsha.expensemanager;
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,8 @@ import sql.databasehelper;
 import sql.expenseDatabase;
 import usermodel.Transaction;
 import usermodel.User;
+
+import static sql.expenseDatabase.COLUMN_USER_ID;
 
 public class fillInfo extends AppCompatActivity implements View.OnClickListener {
 Button button;
@@ -62,6 +66,7 @@ Button button;
 
 
     }
+
 
     public void onClick(View v) {
 
