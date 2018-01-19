@@ -56,7 +56,7 @@ Button button;
 
         textInputLayoutExpense = (TextInputLayout) findViewById(R.id.textInputLayoutExpense);
         textInputEditTextExpense = (TextInputEditText) findViewById(R.id.textInputEditTextExpense);
-        appCompatButtonfillInfo = (AppCompatButton) findViewById(R.id.appCompatButtonfillInfo);
+        appCompatButtonfillInfo = (AppCompatButton) findViewById(R.id.button);
 
 
 
@@ -64,7 +64,7 @@ Button button;
 
     public void onClick(View v) {
 
-       if( v.getId()== R.id.appCompatButtonfillInfo)
+       if( v.getId()== R.id.button)
                 postDataToSQLite();
 
 
