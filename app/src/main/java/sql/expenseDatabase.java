@@ -1,8 +1,12 @@
 package sql;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+import usermodel.User;
 
 import static sql.databasehelper.TABLE_USER;
 
@@ -32,6 +36,23 @@ public class expenseDatabase extends SQLiteOpenHelper {
     public expenseDatabase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         this.context = context;
+    }
+    public void addUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_ID, user.getId());
+
+        values.put(COLUMN_EXPENSE_AMOUNT, user.getExpense());
+        //values.put(COLUMN_SAVINGS, user.getSavings());
+
+        long newRowId=db.insert(TABLE_USER_EXPENSE, null, values);
+        if (newRowId == -1) {
+            Toast.makeText(this.context, "Error with adding expense", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this.context, "Added successfully " , Toast.LENGTH_SHORT).show();
+        }
+        db.close();
     }
 
     @Override

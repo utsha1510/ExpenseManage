@@ -14,14 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import sql.databasehelper;
+import sql.expenseDatabase;
 import usermodel.User;
 
 public class fillInfo extends AppCompatActivity implements View.OnClickListener {
 Button button;
 
-    private TextInputEditText textInputEditTextIncome;
-    private TextInputEditText textInputEditTextSavings;
-    private TextInputEditText textInputEditTextBudget;
+
     private TextInputEditText textInputEditTextExpense;
 
 
@@ -30,7 +29,7 @@ Button button;
     private AppCompatButton appCompatButtonfillInfo;
     private final AppCompatActivity activity = fillInfo.this;
 
-    private databasehelper databaseHelper;
+    private expenseDatabase databaseHelper;
     private User user;
 
     @SuppressLint("WrongViewCast")
@@ -43,7 +42,7 @@ Button button;
     button.setOnClickListener((View.OnClickListener) this);}
     private void initObjects() {
 
-        databaseHelper = new databasehelper(activity);
+        databaseHelper = new expenseDatabase(activity);
         user = new User();
 
     }
@@ -78,7 +77,7 @@ Button button;
 
             user.setExpense(textInputEditTextExpense);
 
-            databaseHelper.addUser(user);
+           // expenseDatabase.addUser(user);
 
 
 
