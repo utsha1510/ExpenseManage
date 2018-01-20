@@ -140,10 +140,24 @@ public class User extends ListActivity
     }
 
 
+    /* ArrayAdapter<String> itemsAdapter =
+              new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Transaction);
+      ListView listView = (ListView) findViewById(R.id.list);
+      listView.setAdapter(itemsAdapter);*/
+    public class MyListActivity extends ListActivity {
+        public void onCreate(Bundle icicle) {
+            super.onCreate(icicle);
 
-   ArrayAdapter<String> itemsAdapter =
-            new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Transaction);
-    ListView listView = (ListView) findViewById(R.id.list);
-    listView.setAdapter(itemsAdapter);
-  //  mAdapter = new SimpleAdapter(this,getTransactions(),android.R.layout.simple_list_item_1, new String[], android.R.id.list);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, getTransactions());
+            setListAdapter(adapter);
+        }
+
+        @Override
+        protected void onListItemClick(ListView l, View v, int position, long id) {
+            String item = (String) getListAdapter().getItem(position);
+
+        }
+        //  mAdapter = new SimpleAdapter(this,getTransactions(),android.R.layout.simple_list_item_1, new String[], android.R.id.list);
+    }
 }
