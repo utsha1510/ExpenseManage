@@ -10,15 +10,13 @@ import android.view.View;
 import android.widget.Button;
 
 import sql.databasehelper;
-import sql.expenseDatabase;
 import usermodel.User;
 
 
 public class UserExpenseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private databasehelper databaseHelper;
-    private expenseDatabase database;
-    Button button;
+    private Button button;
 
     private AppCompatTextView nameTextView;
     private AppCompatTextView incomeTextView;
@@ -39,11 +37,8 @@ public class UserExpenseActivity extends AppCompatActivity implements View.OnCli
         this.budgetTextView = (AppCompatTextView) findViewById(R.id.textViewBudget);
 
         databaseHelper = new databasehelper(this);
-        database=new expenseDatabase(this);
 
-        User user = databaseHelper.getUser(getIntent().getExtras().getString("EMAIL"),getIntent().getExtras().getString("PASSWORD"));
-
-        Log.i("TAG_APP","inoome: " + user.getIncome()  + " saving: " + user.getSavings() + " budget: " + user.getBudget() + " expense: " + user.getExpense());
+        User user = databaseHelper.getUser(getIntent().getExtras().getString("EMAIL"), getIntent().getExtras().getString("PASSWORD"));
 
         nameTextView.setText(user.getName());
         expenseTextView.setText("Expense: " + Long.toString(user.getExpense()));
@@ -52,13 +47,14 @@ public class UserExpenseActivity extends AppCompatActivity implements View.OnCli
         savingTextView.setText("Savings: " + Long.toString(user.getSavings()));
 
 
-   button= (Button) findViewById(R.id.addButton);
-    button.setOnClickListener(this);}
+        button = (Button) findViewById(R.id.addButton);
+        button.setOnClickListener(this);
+    }
 
-    public  void onClick(View view)
-{
-    Intent k = new Intent(this, fillInfo.class);
-    startActivity(k);
-}
-
+    public void onClick(View view) {
+        Intent k = new Intent(this, ExpenseActivity.class);
+        k.putExtra("EMAIL", getIntent().getExtras().getString("EMAIL"));
+        k.putExtra("PASSWORD", getIntent().getExtras().getString("PASSWORD"));
+        startActivity(k);
+    }
 }

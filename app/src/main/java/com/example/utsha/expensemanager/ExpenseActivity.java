@@ -1,41 +1,28 @@
 package com.example.utsha.expensemanager;
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatTextView;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import sql.databasehelper;
-import sql.expenseDatabase;
 import usermodel.Transaction;
-import usermodel.User;
 
-import static sql.expenseDatabase.COLUMN_USER_ID;
-
-public class fillInfo extends AppCompatActivity implements View.OnClickListener {
-Button button;
-
+public class ExpenseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextInputEditText textInputEditTextExpense;
-
+    private TextInputEditText textInputEditTextExpenseName;
 
     private TextInputLayout textInputLayoutExpense;
 
     private AppCompatButton appCompatButtonfillInfo;
-    private final AppCompatActivity activity = fillInfo.this;
 
-    private expenseDatabase databaseHelper;
-    private Transaction user;
+    private databasehelper databaseHelper;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -43,57 +30,49 @@ Button button;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fill_info);
         initObjects();
-
-    button.setOnClickListener((View.OnClickListener) this);}
-    private void initObjects() {
-
-        databaseHelper = new expenseDatabase(activity);
-        user = new Transaction();
-
+        initViews();
+        initListeners();
     }
+
+    private void initObjects() {
+        databaseHelper = new databasehelper(this);
+    }
+
     private void initListeners() {
         appCompatButtonfillInfo.setOnClickListener((View.OnClickListener) this);
-
-
     }
+
     @SuppressLint("WrongViewCast")
     private void initViews() {
-
         textInputLayoutExpense = (TextInputLayout) findViewById(R.id.textInputLayoutExpense);
         textInputEditTextExpense = (TextInputEditText) findViewById(R.id.textInputEditTextExpense);
+        textInputEditTextExpenseName = (TextInputEditText) findViewById(R.id.textInputEditTextExpenseName);
         appCompatButtonfillInfo = (AppCompatButton) findViewById(R.id.button);
-
-
-
     }
-
 
     public void onClick(View v) {
 
-       if( v.getId()== R.id.button)
-                postDataToSQLite();
+        if (v.getId() == R.id.button)
+            postDataToSQLite();
 
-
-        Intent i= new Intent(this,UserExpenseActivity.class);
-        startActivity(i);
-
+        Intent intent = new Intent(this, UserExpenseActivity.class);
+        intent.putExtra("EMAIL", getIntent().getExtras().getString("EMAIL"));
+        intent.putExtra("PASSWORD", getIntent().getExtras().getString("PASSWORD"));
+        startActivity(intent);
     }
+
     private void postDataToSQLite() {
+        Transaction tranasaction = new Transaction();
+        Log.i("APP_TAG", getIntent().getExtras().getString("EMAIL"));
 
-                       user.setExpense(textInputEditTextExpense);
-
-           // expenseDatabase.addUser(user);
-
-
-
+        tranasaction.setEmail(getIntent().getExtras().getString("EMAIL"));
+        tranasaction.setExpense(textInputEditTextExpense);
+        tranasaction.setExpenseName(textInputEditTextExpenseName);
+        databaseHelper.addTransaction(tranasaction);
     }
+
     private void emptyInputEditText() {
-
         textInputEditTextExpense.setText(null);
-
     }
-
-
-
 }
 

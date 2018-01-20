@@ -4,6 +4,8 @@ package usermodel;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 
+import java.util.List;
+
 public class User {
     private int id;
     private String name;
@@ -13,10 +15,11 @@ public class User {
     private long budget;
     private long savings;
     private long expense;
+    private List<Transaction> transactions;
 
     public User(){}
 
-    public User(int id, String name, String email, String password, long income, long budget, long expense){
+    public User(int id, String name, String email, String password, long income, long budget, long expense, List<Transaction> transactions){
         this.id = id;
         this.name = name;
         this.email = email;
@@ -25,6 +28,7 @@ public class User {
         this.budget = budget;
         this.savings = income - expense;
         this.expense = expense;
+        this.transactions = transactions;
     }
 
     public int getId() {
@@ -93,5 +97,13 @@ public class User {
     {String incom = expense.getText().toString();
         int inco = new Integer(incom).intValue();
         this.expense = inco;
+    }
+
+    public void setTransactions(List<Transaction> transactions){
+        this.transactions = transactions;
+    }
+
+    public List<Transaction> getTransactions(){
+        return this.transactions;
     }
 }

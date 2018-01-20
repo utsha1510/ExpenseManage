@@ -32,7 +32,7 @@
             android:icon="@drawable/rupees_fin"/>
         <activity android:name=".RegisterActivity"
             android:icon="@drawable/rupees_fin"/>
-        <activity android:name=".fillInfo"
+        <activity android:name=".ExpenseActivity"
             android:icon="@drawable/rupees_fin"></activity>
     </application>
 
