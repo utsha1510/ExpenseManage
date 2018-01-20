@@ -1,12 +1,37 @@
 package usermodel;
 
 
+import android.app.ActionBar;
+import android.app.ListActivity;
+import android.app.LoaderManager;
+import android.content.Context;
+import android.content.Loader;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
+import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+//import  android.*;
 
+import com.example.utsha.expensemanager.R;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User extends ListActivity
+        implements LoaderManager.LoaderCallbacks<Cursor> {
+
     private int id;
     private String name;
     private String email;
@@ -17,9 +42,10 @@ public class User {
     private long expense;
     private List<Transaction> transactions;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(int id, String name, String email, String password, long income, long budget, long expense, List<Transaction> transactions){
+    public User(int id, String name, String email, String password, long income, long budget, long expense, List<Transaction> transactions) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -62,6 +88,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
     public long getIncome() {
         return income;
     }
@@ -71,6 +98,7 @@ public class User {
         int inco = new Integer(incom).intValue();
         this.income = inco;
     }
+
     public long getBudget() {
         return budget;
     }
@@ -80,8 +108,9 @@ public class User {
         int inco = new Integer(incom).intValue();
         this.budget = inco;
     }
+
     public long getSavings() {
-        return savings;
+        return income - expense;
     }
 
     public void setSavings(TextInputEditText savings) {
@@ -89,21 +118,32 @@ public class User {
         int inco = new Integer(incom).intValue();
         this.savings = inco;
     }
+
     public long getExpense() {
         return expense;
     }
 
-    public void setExpense(TextInputEditText expense)
-    {String incom = expense.getText().toString();
+    public void setExpense(TextInputEditText expense) {
+        String incom = expense.getText().toString();
         int inco = new Integer(incom).intValue();
         this.expense = inco;
     }
 
-    public void setTransactions(List<Transaction> transactions){
+    SimpleAdapter mAdapter;
+
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 
-    public List<Transaction> getTransactions(){
+    public List<Transaction> getTransactions() {
         return this.transactions;
     }
+
+
+
+   ArrayAdapter<String> itemsAdapter =
+            new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Transaction);
+    ListView listView = (ListView) findViewById(R.id.list);
+    listView.setAdapter(itemsAdapter);
+  //  mAdapter = new SimpleAdapter(this,getTransactions(),android.R.layout.simple_list_item_1, new String[], android.R.id.list);
 }
