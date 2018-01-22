@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -139,24 +141,47 @@ public class User extends ListActivity
         return this.transactions;
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
+
 
     /* ArrayAdapter<String> itemsAdapter =
               new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Transaction);
       ListView listView = (ListView) findViewById(R.id.list);
       listView.setAdapter(itemsAdapter);*/
+    //Button b= (Button) findViewById(R.id.)
     public class MyListActivity extends ListActivity {
         public void onCreate(Bundle icicle) {
             super.onCreate(icicle);
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, getTransactions());
+            mCursor = this.getContentResolver().query(People.CONTENT_URI, null, null, null, null);
+            startManagingCursor(mCursor);
+List l= getTransactions();
+            ListAdapter adapter = new SimpleCursorAdapter(
+                    this,
+                    android.R.layout.two_line_list_item, mCursor,                                              // Pass in the cursor to bind to.
+                    new String[] {User.COLUMN_EXPENSE_NAME,User.COLUMN_EXPENSE_AMOUNT},           // Array of cursor columns to bind to.
+                    new int[] {android.R.id.text1, android.R.id.text2});
+            //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                 //   android.R.layout.simple_list_item_1, l);
             setListAdapter(adapter);
         }
 
         @Override
-        protected void onListItemClick(ListView l, View v, int position, long id) {
+        protected void onListItemClick(ListView list, View v, int position, long id) {
             String item = (String) getListAdapter().getItem(position);
-
+            list = getListView();
         }
         //  mAdapter = new SimpleAdapter(this,getTransactions(),android.R.layout.simple_list_item_1, new String[], android.R.id.list);
     }
