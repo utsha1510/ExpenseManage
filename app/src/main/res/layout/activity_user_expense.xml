@@ -9,6 +9,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:paddingTop="20dp"
+    android:fillViewport="true"
     tools:context="com.example.utsha.expensemanager.UserExpenseActivity">
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -63,14 +64,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Expense" />
-        <include layout="@layout/list1"/>
 
-
+        <ListView
+            android:id="@+id/transList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           >
+        </ListView>
 
     </android.support.v7.widget.LinearLayoutCompat>
-
-
-
-
 </android.support.v4.widget.NestedScrollView>
 

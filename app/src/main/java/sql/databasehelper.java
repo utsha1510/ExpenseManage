@@ -191,7 +191,7 @@ public class databasehelper extends SQLiteOpenHelper {
 
         Long totalExpense = 0l;
 
-        List<Transaction> transactionList = new ArrayList<Transaction>();
+        ArrayList<Transaction> transactionList = new ArrayList<Transaction>();
         while(transCursor.moveToNext()){
             Transaction transaction = new Transaction(transCursor.getString(0),transCursor.getString(1),transCursor.getInt(2));
             transactionList.add(transaction);

@@ -3,8 +3,8 @@ package com.example.utsha.expensemanager;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,6 +59,11 @@ public class UserExpenseActivity extends AppCompatActivity implements View.OnCli
 
         button = (Button) findViewById(R.id.addButton);
         button.setOnClickListener(this);
+
+        TransAdapter adapter = new TransAdapter(this, user.getTransactions());
+        // Attach the adapter to a ListView
+        ListView listView = (ListView) findViewById(R.id.transList);
+        listView.setAdapter(adapter);
     }
 
     public void onClick(View view) {
@@ -66,31 +72,33 @@ public class UserExpenseActivity extends AppCompatActivity implements View.OnCli
         k.putExtra("PASSWORD", getIntent().getExtras().getString("PASSWORD"));
         startActivity(k);
     }
-    public class UsersAdapter extends ArrayAdapter<User> {
-        public UsersAdapter(UsersAdapter context, ArrayList<User> users) {
+
+    class TransAdapter extends ArrayAdapter<Transaction> {
+
+        public TransAdapter(Context context, ArrayList<Transaction> transactions) {
           //  super();
-             super(context, 0, users);
+             super(context, 0, transactions);
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // Get the data item for this position
-            User user = getItem(position);
+            Transaction transaction = getItem(position);
             // Check if an existing view is being reused, otherwise inflate the view
             if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.list1, parent, false);
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_layout, parent, false);
             }
+
             // Lookup view for data population
-            ArrayList<User> arrayOfUsers = new ArrayList<User>();
-            // Create the adapter to convert the array to views
-            UsersAdapter adapter = new UsersAdapter(this, arrayOfUsers);
-            // Attach the adapter to a ListView
-            ListView listView = (ListView) findViewById(R.id.list);
-            listView.setAdapter(adapter);
+            TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
+            TextView tvAmount = (TextView) convertView.findViewById(R.id.tvAmount);
+            // Populate the data into the template view using the data object
+            tvName.setText(transaction.getExpenseName());
+            Log.i("APP_TAG",transaction.getExpenseName() + position);
+            tvAmount.setText(String.valueOf(transaction.getExpense()));
             // Return the completed view to render on screen
             return convertView;
         }
     }
-
 
 }
