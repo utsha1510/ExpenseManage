@@ -15,8 +15,10 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sql.databasehelper;
+import usermodel.Transaction;
 import usermodel.User;
 
 
@@ -66,7 +68,8 @@ public class UserExpenseActivity extends AppCompatActivity implements View.OnCli
     }
     public class UsersAdapter extends ArrayAdapter<User> {
         public UsersAdapter(UsersAdapter context, ArrayList<User> users) {
-            super(context, 0, users);
+          //  super();
+             super(context, 0, users);
         }
 
         @Override
@@ -89,5 +92,5 @@ public class UserExpenseActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-   
+
 }
