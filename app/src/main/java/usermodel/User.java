@@ -157,12 +157,32 @@ public class User extends ListActivity
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /* ArrayAdapter<String> itemsAdapter =
               new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Transaction);
       ListView listView = (ListView) findViewById(R.id.list);
       listView.setAdapter(itemsAdapter);*/
     //Button b= (Button) findViewById(R.id.)
-    public class MyListActivity extends ListActivity {
+   /* public class MyListActivity extends ListActivity {
         public void onCreate(Bundle icicle) {
             super.onCreate(icicle);
             mCursor = this.getContentResolver().query(People.CONTENT_URI, null, null, null, null);
@@ -184,5 +204,5 @@ List l= getTransactions();
             list = getListView();
         }
         //  mAdapter = new SimpleAdapter(this,getTransactions(),android.R.layout.simple_list_item_1, new String[], android.R.id.list);
-    }
+    }*/
 }

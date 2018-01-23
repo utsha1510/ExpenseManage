@@ -74,5 +74,11 @@ public class ExpenseActivity extends AppCompatActivity implements View.OnClickLi
     private void emptyInputEditText() {
         textInputEditTextExpense.setText(null);
     }
+
+
+
+
+
+
 }
 
