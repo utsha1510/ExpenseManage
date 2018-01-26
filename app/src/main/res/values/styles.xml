@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@android:color/background_dark</item>
+
     </style>
 
     <style name="emeraldgreen" parent="android:Theme.Holo.Dialog.MinWidth" >

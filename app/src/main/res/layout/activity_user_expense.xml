@@ -69,8 +69,10 @@
             android:id="@+id/transList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           >
-        </ListView>
+            android:textSize="25dp"
+            android:fastScrollAlwaysVisible="true"
+            android:fastScrollEnabled="true"
+            android:visibility="visible"></ListView>
 
     </android.support.v7.widget.LinearLayoutCompat>
 </android.support.v4.widget.NestedScrollView>

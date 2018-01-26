@@ -5,7 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/rupees_fin"
+    android:background="@color/colorBackground"
+    android:color="@color/colorBackground"
     tools:context="com.example.utsha.expensemanager.splashActivity">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="81dp"
+        android:src="@mipmap/ic_launcher_foreground" />
 
 </RelativeLayout>
